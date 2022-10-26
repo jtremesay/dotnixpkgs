@@ -24,18 +24,36 @@
     EDITOR = "nvim";
     PAGER = "less";
     VISUAL = config.home.sessionVariables.EDITOR;
-
-    # Disable fish greeting
-    fish_greeting = "";
   };
   xdg.enable = true;
 
 
   # Install some packages
+  programs.bash.enable = true;
   programs.firefox.enable = true;
   programs.fish.enable = true;
+  programs.git.enable = true;
+  programs.neovim.enable = true;
+  programs.tmux.enable = true;
+  home.packages = [
+    pkgs.black
+    pkgs.python3Full
+    pkgs.python39Packages.ipython
+    pkgs.thunderbird
+  ];
+
+  # Bash
+  programs.bash = {
+    profileExtra = "exec fish";
+  };
+
+  # Fish
+  home.sessionVariables = {
+    fish_greeting = "";
+  };
+
+  # Git
   programs.git = {
-    enable = true;
     userEmail = "jonathan.tremesaygues@slaanesh.org";
     userName = "Jonathan Tremesaygues";
     extraConfig = {
@@ -47,8 +65,9 @@
         };
     };
   };
+
+  # Neovim
   programs.neovim = {
-    enable = true;
     coc = {
         enable = true;
     };
@@ -102,10 +121,8 @@ set colorcolumn=80 " Add a ruler
     vimAlias = true;
     vimdiffAlias = true;
   };
-  home.packages = [
-    pkgs.thunderbird
-  ];
- 
+
+
   # Xsession
   # Could (should ?) be handled by home-manager
   # https://nix-community.github.io/home-manager/options.html#opt-xsession.enable
