@@ -2,9 +2,19 @@
 
 Like dotfiles, but with [home-manager](https://github.com/nix-community/home-manager).
 
+## Pre-bootstrapping
+
+```
+# pacman -Suy curl git vim sudo
+# useradd -m -G adm,ftp,games,http,log,rfkill,sys,systemd-journal,uucp,wheel jtremesay
+# passwd jtremesay
+# EDITOR=vim visudo
+# su - jtremesay
+```
+
 ## Bootstrapping
 
-Install nix:
+Install [nix](https://nixos.org/download.html#nix-install-linux):
 
 ```
 $ sh <(curl -L https://nixos.org/nix/install) --no-daemon
