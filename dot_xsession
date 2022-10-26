@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Set the locale
+export LC_CTYPE="en_US.UTF-8"
+
+# Load Xresources
+if [ -f "$HOME/.Xresources" ]; then
+    xrdb -merge "$HOME/.Xresources" 
+    xsetroot -grey
+fi
+
+# Start i3
+exec ssh-agent i3
